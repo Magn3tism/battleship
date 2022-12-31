@@ -1,25 +1,33 @@
-import Ship from "./../scripts/ship";
+import Ship from "../scripts/ship";
 
-it("Checks length", () => {
+it("Check length", () => {
+  expect(new Ship().length).toBe(1);
+  expect(new Ship(1).length).toBe(1);
   expect(new Ship(5).length).toBe(5);
   expect(new Ship(7).length).toBe(7);
-  expect(new Ship(3).length).toBe(3);
-  expect(new Ship(9).length).toBe(9);
 });
 
-it("Checks hits before hit", () => {
-  expect(new Ship(5).hits).toBe(0);
+it("Check initial hits", () => {
+  expect(new Ship().hits).toEqual([1]);
+  expect(new Ship(1).hits).toEqual([1]);
+  expect(new Ship(5).hits).toEqual([1, 2, 3, 4, 5]);
+  expect(new Ship(7).hits).toEqual([1, 2, 3, 4, 5, 6, 7]);
 });
 
 it("Check hit", () => {
-  let ship = new Ship(5);
-
-  expect(ship.hits).toBe(0);
-  ship.hit();
-  expect(ship.hits).toBe(1);
+  expect(new Ship(5).hit(2)).toEqual([1, 2, -3, 4, 5]);
 });
 
 it("Check sunk", () => {
-  expect(new Ship(4).isSunk(0)).toBeFalsy();
-  expect(new Ship(5).isSunk(5)).toBeTruthy();
+  let ship = new Ship(5);
+
+  expect(ship.isSunk).toBeFalsy();
+
+  ship.hit(0);
+  ship.hit(1);
+  ship.hit(2);
+  ship.hit(3);
+  ship.hit(4);
+
+  expect(ship.isSunk).toBeTruthy();
 });
