@@ -12,6 +12,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: "BattleShip",
+      favicon: "",
     }),
   ],
   module: {
