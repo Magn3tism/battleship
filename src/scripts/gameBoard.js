@@ -3,10 +3,12 @@ import Ship from "./ship";
 export default class GameBoard {
   #board;
   #ships;
+  #allShips;
 
   constructor() {
     this.#board = [[], [], [], [], [], [], [], [], [], []];
     this.#ships = 0;
+    this.#allShips = [];
 
     for (let i = 0; i < 10; i++) {
       for (let j = 0; j < 10; j++) {
@@ -41,6 +43,8 @@ export default class GameBoard {
       };
       pos++;
     }
+
+    this.#allShips.push(ship);
   }
 
   recieveAttack(x, y) {
@@ -51,6 +55,15 @@ export default class GameBoard {
     if (this.#board[x][y].value === 0) return "Miss";
 
     this.#board[x][y].value.hit(this.#board[x][y].position - 1);
+
     return "Hit";
+  }
+
+  checkAllSunk() {
+    let sunk = 0;
+
+    this.#allShips.forEach((ship) => (sunk += !ship.isSunk));
+
+    return !sunk;
   }
 }

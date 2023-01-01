@@ -168,3 +168,39 @@ describe("Check Hit", () => {
     expect(board.recieveAttack(3, 5)).toBeFalsy();
   });
 });
+
+describe("Check Sunk", () => {
+  let board = new GameBoard();
+  it("Check sunk on empty board", () => {
+    expect(board.checkAllSunk()).toBeTruthy();
+  });
+
+  it("Check sunk on board with one ship", () => {
+    board.place(3, 4);
+    expect(board.checkAllSunk()).toBeFalsy();
+    board.recieveAttack(3, 4);
+    expect(board.checkAllSunk()).toBeTruthy();
+  });
+
+  it("Check sunk on board with multiple ships", () => {
+    board.place(3, 7, 3);
+    board.place(8, 2, 7);
+
+    expect(board.checkAllSunk()).toBeFalsy();
+    board.recieveAttack(3, 7);
+    expect(board.checkAllSunk()).toBeFalsy();
+    board.recieveAttack(3, 8);
+    board.recieveAttack(3, 9);
+    expect(board.checkAllSunk()).toBeFalsy();
+
+    board.recieveAttack(8, 2);
+    board.recieveAttack(8, 3);
+    expect(board.checkAllSunk()).toBeFalsy();
+    board.recieveAttack(8, 4);
+    board.recieveAttack(8, 5);
+    board.recieveAttack(8, 6);
+    board.recieveAttack(8, 7);
+    board.recieveAttack(8, 8);
+    expect(board.checkAllSunk()).toBeTruthy();
+  });
+});

@@ -33,7 +33,7 @@ export default class Ship {
   get isSunk() {
     let sunk = 0;
     this.#hits.forEach((element) => {
-      sunk = sunk + (element > 0);
+      sunk += element > 0;
     });
 
     return !sunk;
