@@ -14,6 +14,7 @@ export default class GameBoard {
           ship: null,
           position: null,
           value: 0,
+          hit: false,
         };
       }
     }
@@ -37,6 +38,7 @@ export default class GameBoard {
         position: pos,
         ...(i === 0 && { value: ship }),
         ...(i !== 0 && { value: -1 }),
+        hit: false,
       };
       pos++;
     }
