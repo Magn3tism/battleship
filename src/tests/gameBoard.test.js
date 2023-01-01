@@ -50,13 +50,13 @@ describe("Check placing of ships", () => {
     expect(board.board[0][5]).toEqual({
       ship: 1,
       position: 2,
-      value: -1,
+      value: {},
       hit: false,
     });
     expect(board.board[0][6]).toEqual({
       ship: 1,
       position: 3,
-      value: -1,
+      value: {},
       hit: false,
     });
   });
@@ -92,13 +92,13 @@ describe("Check placing of ships", () => {
     expect(board.board[0][5]).toEqual({
       ship: 1,
       position: 2,
-      value: -1,
+      value: {},
       hit: false,
     });
     expect(board.board[0][6]).toEqual({
       ship: 1,
       position: 3,
-      value: -1,
+      value: {},
       hit: false,
     });
 
@@ -130,5 +130,41 @@ describe("Check placing of ships", () => {
     expect(board.place(0, 4)).toBe("Ship already exists");
     expect(board.place(0, 5)).toBe("Ship already exists");
     expect(board.place(0, 5)).toBe("Ship already exists");
+  });
+});
+
+describe("Check Hit", () => {
+  let board = new GameBoard();
+
+  it("Check hit on empty space", () => {
+    expect(board.recieveAttack(3, 4)).toBe("Miss");
+    expect(board.board[3][4]).toEqual({
+      ship: null,
+      position: null,
+      value: 0,
+      hit: true,
+    });
+  });
+
+  it("Check hit on ship", () => {
+    board.place(3, 5, 3);
+    expect(board.recieveAttack(3, 5)).toBe("Hit");
+    expect(board.board[3][5]).toEqual({
+      ship: 1,
+      position: 1,
+      value: {},
+      hit: true,
+    });
+
+    board.recieveAttack(3, 6);
+    board.recieveAttack(3, 7);
+
+    expect(board.board[3][5].value.hits[0]).toBe(-1);
+    expect(board.board[3][6].value.hits[1]).toBe(-2);
+    expect(board.board[3][7].value.hits[2]).toBe(-3);
+  });
+
+  it("Check hit on already hit tile", () => {
+    expect(board.recieveAttack(3, 5)).toBeFalsy();
   });
 });

@@ -39,5 +39,3 @@ export default class Ship {
     return !sunk;
   }
 }
-
-console.log(new Ship(1));
