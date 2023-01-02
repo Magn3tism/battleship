@@ -28,6 +28,7 @@ export default class GameBoard {
 
   place(x, y, size = 1) {
     if (this.#board[x][y].value !== 0) return "Ship already exists";
+    if (y + size > 10) return "Cannot place";
 
     const ship = new Ship(size);
     let length = ship.length;

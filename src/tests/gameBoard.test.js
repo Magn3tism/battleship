@@ -131,6 +131,11 @@ describe("Check placing of ships", () => {
     expect(board.place(0, 5)).toBe("Ship already exists");
     expect(board.place(0, 5)).toBe("Ship already exists");
   });
+
+  it("Check placing ships at end", () => {
+    let board = new GameBoard();
+    expect(board.place(0, 8, 3)).toBe("Cannot place");
+  });
 });
 
 describe("Check Hit", () => {
