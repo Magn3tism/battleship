@@ -1,4 +1,4 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+// const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
 module.exports = {
@@ -9,14 +9,12 @@ module.exports = {
   },
   mode: "development",
   devtool: "inline-source-map",
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: "BattleShip",
-      favicon: "",
-    }),
-  ],
   module: {
     rules: [
+      {
+        test: /\.html$/i,
+        use: { loader: "html-loader" },
+      },
       {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
