@@ -19,7 +19,8 @@ function gameBoard(text, player) {
     for (let j = 0; j < 10; j++) {
       let box = document.createElement("div");
       box.classList.add("box");
-      if (player === "p2") box.classList.add("p2");
+      // if (player === "p2") box.classList.add("p2");
+
       board.appendChild(box);
 
       if (i % 9 === 0 && i !== 0) box.classList.add("box-bottom");
@@ -27,13 +28,14 @@ function gameBoard(text, player) {
     }
   }
   board.classList.add("board");
+  board.id = player;
 
-  if (player === "p2") {
-    const start = document.createElement("button");
-    start.textContent = "Start";
-    start.classList.add("start");
-    board.appendChild(start);
-  }
+  // if (player === "p2") {
+  //   const start = document.createElement("button");
+  //   start.textContent = "Start";
+  //   start.classList.add("start");
+  //   board.appendChild(start);
+  // }
 
   boardContainer.appendChild(title);
   boardContainer.appendChild(board);
