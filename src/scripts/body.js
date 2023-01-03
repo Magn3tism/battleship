@@ -17,7 +17,8 @@ function gameBoard(text, player) {
 
   for (let i = 0; i < 10; i++) {
     for (let j = 0; j < 10; j++) {
-      let box = document.createElement("div");
+      let box = document.createElement("button");
+      // let box = document.createElement("div");
       box.classList.add("box");
       // if (player === "p2") box.classList.add("p2");
 

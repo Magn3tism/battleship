@@ -29,6 +29,7 @@ main {
   margin-top: 10px;
   position: relative;
   box-shadow: 0 0.2rem 0.6rem #00000080;
+  user-select: none;
 }
 
 .box {
@@ -39,14 +40,38 @@ main {
   border-right: 1px solid #db5061;
   border-bottom: 1px solid #db5061;
   background-color: #fff7f7;
+  outline: none;
+}
+
+.box:active {
+  border: none;
+  outline: none;
+  border-right: 1px solid #db5061;
+  border-bottom: 1px solid #db5061;
+  transform: none;
 }
 
 .box-right {
   border-right: none;
 }
 
+.box-right:active {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #db5061;
+  transform: none;
+}
+
+
 .box-bottom {
   border-bottom: none;
+}
+
+.box-bottom:active {
+  border: none;
+  outline: none;
+  border-right: 1px solid #db5061;
+  transform: none;
 }
 
 .p2 {
