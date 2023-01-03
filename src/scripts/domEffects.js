@@ -22,11 +22,16 @@ function onPlace(player) {
 }
 
 function onHit(node) {
-  node.textContent = "X";
+  node.textContent = "×";
+  node.classList.add("attacked");
+  node.classList.add("hit-ship");
 }
 
 function onMiss(node) {
-  node.textContent = ".";
+  node.textContent = "•";
+  node.classList.add("attacked");
 }
 
-export { onPlace, onHit, onMiss };
+function sinkShip() {}
+
+export { onPlace, onHit, onMiss, sinkShip };

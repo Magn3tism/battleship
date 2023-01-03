@@ -67,4 +67,8 @@ export default class GameBoard {
 
     return !sunk;
   }
+
+  get allShips() {
+    return this.#allShips;
+  }
 }
