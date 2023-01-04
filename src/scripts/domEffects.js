@@ -32,6 +32,16 @@ function onMiss(node) {
   node.classList.add("attacked");
 }
 
-function sinkShip() {}
+function winMessage(player) {
+  const message = document.getElementById("message");
 
-export { onPlace, onHit, onMiss, sinkShip };
+  message.textContent = `${player} Wins!`;
+}
+
+function turnMessage(player) {
+  const message = document.getElementById("message");
+
+  message.textContent = `${player}'s turn`;
+}
+
+export { onPlace, onHit, onMiss, winMessage, turnMessage };

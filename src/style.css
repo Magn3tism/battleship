@@ -131,3 +131,14 @@ main {
   background-color: red;
   color: white;
 }
+
+button {
+  all: unset;
+}
+
+#message {
+  margin: 30px ;
+  font-size: 30px;
+  text-align: center;
+  text-shadow: -2px -1px 50px rgba(0,0,0,1);
+}
